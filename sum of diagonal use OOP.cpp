@@ -8,6 +8,7 @@ public:
 void setvalue(){
 cout << "Enter the value of n" << endl;
 cin>>n;
+cout << "Enter the value row-wise" << endl;
 for(int i=0;i<n;i++){
 for(int j=0;j<n;j++)
 cin>>a[i][j];
