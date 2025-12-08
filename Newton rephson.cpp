@@ -1,45 +1,41 @@
-#include<iostream>
-#include<cmath>
-#include<iomanip>
+#include<bits/stdc++.h>
 #define pi 3.14159
-#define t 0.00000001
+#define t 0.00001
 using namespace std;
 double f(double x){
-return 3*x-cos(x)-1;
+return 3*x-cos(x*pi/180)-1;
 }
 double ff(double x){
-return 3+sin(x);
+return 3+sin(x*pi/180);
 }
-void nr(double x1){
-double x0=0;
+void newtonrephson(double x1){
+double x0;
 int i=1;
-cout << "According to Newton repsons method " << endl;
-while(abs(x1-x0)>=t){
+cout << ".....According to Newton rephson .... " << endl;
+while(1){
 x0=x1;
-if(ff(x0)==0){
-cout << " Mathematical error " << endl;
+if(ff(x1)==0){
+cout << "Mathematical error"<< endl;
 exit(0);
 }
-else{
-x1=x0-f(x0)/ff(x0);
-cout << "At step "<<i<<" is"<<" x"<<i<<"="<<x1<< endl;
+x1=x0-(f(x0)/ff(x0));
+cout << "x"<<i<<"=" <<x1<< endl;
 i++;
+if(fabs(x1-x0)<t)
+break;
 }
-}
-cout << "The required roots is= " <<x1<< endl;
-cout << "Number of iterations is = " <<i-1<< endl;
+cout << "The root is ="<<x1<< endl;
+cout << "number of iteration "<<i-1 << endl;
 }
 int main(){
-a:
-int y;
+z:
 double x;
-cout << "Initial value of " << endl;
+cout << "Enter initial guess value " << endl;
 cin>>x;
-x=x*pi/180;
-nr(x);
-cout << "You run again press 1 otherwise press 0" << endl;
+newtonrephson(x);
+int y;
+cout << "Run again? yes Press any number exit to 0" << endl;
 cin>>y;
 if(y)
-goto a;
-return 0;
+goto z;
 }
