@@ -1,46 +1,41 @@
 #include<bits/stdc++.h>
-#define t 0.000001
+#define pi 3.14159
+#define t 0.00001
 using namespace std;
-double f(double x) {
-return pow(x,3)-5*x+3;
+double f(double x){
+return 3*x-cos(x*pi/180)-1;
 }
-void bi(double a,double b){
-double x;
-x=(a+b)/2;
+void bisection(double a,double b){
+double x=(a+b)/2;
 int i=1;
-cout << "According to bisection  method " << endl;
+cout << ".....According to bisection.... " << endl;
 if(f(a)*f(b)>0){
-cout << "There is no roots Between " <<a<<"and "<<b<< endl;
+cout << "There is no roots Between " <<a<<" and "<<b<< endl;
+exit(0);
 }
-else{
 if(f(x)==0){
-cout << "The required roots is= "<<x<< endl;
-}
-else {
-while(fabs(a-b)>=t){
-if(f(a)*f(x)<0){
-b=x;
+cout << "The root is" <<x<< endl;
 }
 else{
-a=x;
-}
+while(fabs(b-a)>=t){
 x=(a+b)/2;
-cout << "At step "<<i<<" x "<<i<<"=" <<x<< endl;
+if(f(a)*f(x)<0)b=x;
+else if (f(x)*f(b)<0)a=x;
+cout << "x"<<i<<"=" <<x<< endl;
 i++;
 }
-cout << "The required roots is= "<<x << endl;
-cout << "Number of iteration = "<<i-1 << endl;
-}
+cout << "The root is ="<<x<< endl;
+cout << "number of iteration "<<i-1 << endl;
 }
 }
 int main(){
 z:
-int y;
 double a,b;
 cout << "Enter the value of a and b" << endl;
-cin >> a>>b;
-bi(a,b);
-cout << "Run again? press 1 otherwise 0" << endl;
+cin>>a>>b;
+bisection(a,b);
+int y;
+cout << "Run again? yes Press any number exit to 0" << endl;
 cin>>y;
 if(y)
 goto z;
