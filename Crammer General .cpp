@@ -41,6 +41,10 @@ for(int j=0;j<n;j++)
 cin>>a[i][j];
 }
 md=dat(a,n);
+ if(md<1e-9){
+cout << "No solution " << endl;
+exit(0);
+}
 cout << "Enter rhs" << endl;
 for(int i=0;i<n;i++){
 cin>>b[i];
