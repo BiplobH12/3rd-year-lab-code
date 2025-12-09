@@ -1,51 +1,34 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
-double d(double x1, double y1, double x2, double y2) {
-    return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
-}
-
-class DistanceCalculator {
+class di {
 private:
-    int n;
-    double** a;
-
+double x1,x2,y1,y2,max=-1e9,min=1e9,dis=0;
 public:
-    void setvalue() {
-        cout << "Enter the amount of points: ";
-        cin >> n;
-        a = new double*[n];
-        for(int i = 0; i < n; i++) {
-            a[i] = new double[2];
-        }
-        
-        cout << "Enter the points (x,y)" << endl;
-        for(int i = 0; i < n; i++) {
-            cin >> a[i][0] >> a[i][1];
-        }
-        
-        double min = 1e18, max = -1e18;
-        
-        for(int i = 0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
-                double dis = d(a[i][0], a[i][1], a[j][0], a[j][1]);
-                if(dis < min) min = dis;
-                if(dis > max) max = dis;
-            }
-        }
-        
-        cout << "Largest distance: " << max << endl;
-        cout << "Smallest distance: " << min << endl;
-        
-        // Free memory
-        for(int i = 0; i < n; i++) {
-            delete[] a[i];
-        }
-        delete[] a;
-    }
+
+double d(double x1,double x2,double y1,double y2){
+return sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+}
+void rvalue(){
+int n;
+cout << "Enter the number of points" << endl;
+cin>>n;
+double a[100][2];
+cout << "Enter the points (x,y)" << endl;
+for(int i=0;i<n;i++){
+cin>>a[i][0]>>a[i][1];
+}
+for(int i=0;i<n;i++){
+for(int j=i+1;j<n;j++){
+ dis=d(a[i][0],a[j][0],a[i][1],a[j][1]);
+ if(dis<min)min=dis;
+if(dis>max)max=dis;
+}
+}
+cout << "The largest distance " <<max<< endl;
+cout << "The minimum distance " <<min<< endl;
+}
 };
-int main() {
-    DistanceCalculator ds;
-    ds.setvalue();
-    return 0;
+int main(){
+di ds;
+ds.rvalue();
 }
