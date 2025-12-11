@@ -12,7 +12,7 @@ cin>>t[i][j];
 }
 for(int i=0;i<n;i++){
 int p=i;
-for(int k=0;k<n;k++){
+for(int k=i+1;k<n;k++){
 if(fabs(t[k][i])>fabs(t[p][i]))
 p=k;
 }
